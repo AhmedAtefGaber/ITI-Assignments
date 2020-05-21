@@ -1,0 +1,23 @@
+create bash shell spript to: 
+add
+delete
+update
+display
+============
+1-invoice
+   invID
+   customerNAME
+   invdata
+   invtotal
+2-good 
+   ID
+   name
+   Quantity
+   unitprice
+3-invoice details
+   invID
+   goodID
+   quantity
+   date 
+   total
+==============
