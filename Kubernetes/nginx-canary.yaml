@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-canary
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        track: canary
+        Version: 1.9.1
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.9.1
+        ports:
+        - containerPort: 80
+
+#  A canary deployment is a separate deployment used to test a new version of nginx
+#  and single service targets both the canary and the normal deployments. 
+#  scale down the primary deployment to 0 replicas.
+#  kubectl scale --replicas=0 deployment nginx-deployment
