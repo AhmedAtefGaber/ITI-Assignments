@@ -3,20 +3,12 @@
         ServerName {{site_name}}
         ServerAlias www.{{site_name}}
 
-        DocumentRoot "{{wp_install_dir}}"
+        DocumentRoot {{wp_install_dir}}
 
-        <Directory "{{wp_install_dir}}">
-                Options FollowSymLinks MultiViews Includes ExecCGI
-                AllowOverride none
-                Order allow,deny
-                allow from all
+        <Directory {{wp_install_dir}} >
+                Options Indexes FollowSymLinks
+                AllowOverride All
                 Require all granted
-                #RewriteEngine On
-                #RewriteBase /
-                #RewriteRule ^index\.php$ - [L]
-                #RewriteCond %{REQUEST_FILENAME} !-f
-                #RewriteCond %{REQUEST_FILENAME} !-d
-                #RewriteRule . /index.php [L]
         </Directory>
 
         ErrorLog /var/log/apache2/{{site_name}}-error.log
